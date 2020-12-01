@@ -1,0 +1,7 @@
+*{
+  margin: 0; padding: 0;
+  font-family: Lato !important;
+}
+
+.container{margin: auto;}
+.mainer{position: relative; left: 10em; display: none;}

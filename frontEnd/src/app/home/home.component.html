@@ -1,0 +1,9 @@
+<div class="col-sm-12  col-md-12 col-lg-offset-3">
+  <h1>Welcome,  {{ currentUser.email }}</h1>
+  <p>Listed below is a sample of our recent reviews</p>
+
+  <app-view-reviews></app-view-reviews>
+  <p><a [routerLink]="['/login']">Logout</a></p>
+
+</div>
+

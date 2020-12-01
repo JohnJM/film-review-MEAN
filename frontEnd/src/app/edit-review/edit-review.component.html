@@ -1,0 +1,29 @@
+<mat-card>
+  <mat-card-header> <h1>Edit Review </h1></mat-card-header>
+  <!-- $event, Title.value, Director.value, Studio.value, Year.value, Img.value, Review.value-->
+  <form  (ngSubmit)="edit()" #bookForm="ngForm" >
+    <mat-form-field>
+      <input name="title" matInput placeholder="Title"  [(ngModel)]="editReview.title">
+    </mat-form-field>
+
+    <mat-form-field>
+      <input name="director" matInput placeholder="Director" [(ngModel)]="editReview.director">
+    </mat-form-field>
+    <mat-form-field>
+      <input name="studio" matInput placeholder="Studio"  [(ngModel)]="editReview.studio">
+    </mat-form-field>
+    <mat-form-field>
+      <input name="year" matInput [matDatepicker]="picker" placeholder="Choose Release date" [(ngModel)]="editReview.year" >
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+
+    <mat-form-field>
+      <input name="img" matInput placeholder="Image URL"  [(ngModel)]="editReview.img">
+    </mat-form-field>
+
+    <app-ngx-editor name="review" [placeholder]="'Enter text here...'"
+                    [spellcheck]="true"  [(ngModel)]="editReview.review"></app-ngx-editor>
+    <button  class="btn btn-md btn-primary btn-block" type="submit">Submit</button>
+  </form>
+</mat-card>

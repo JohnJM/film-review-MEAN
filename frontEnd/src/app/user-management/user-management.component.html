@@ -1,0 +1,31 @@
+<mat-accordion>
+  <div *ngFor =' let user of allUsers'>
+    <mat-expansion-panel class="trans">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          <h3> username: {{user.email}}</h3>
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <mat-card>
+        <mat-card-title>
+          mongo id : {{ user._id }} <br/>
+          role: {{ user.role }} <br />
+          
+          <form  (ngSubmit)="updateUser(user)" #bookForm="ngForm">
+            <select class="form-control" name="role" [(ngModel)]="user.role">
+              <option value="creator">Creator</option>
+              <option value="editor">Editor</option>
+              <option value="reader">Reader</option>
+            </select>
+            <button type="submit">Save</button>
+          </form>
+        </mat-card-title>
+        <mat-card-content>
+          <button
+            class="btn btn-danger" type="button" (click)="deleteUser()"> DELETE
+          </button>
+        </mat-card-content>
+      </mat-card>
+    </mat-expansion-panel>
+  </div>
+</mat-accordion>

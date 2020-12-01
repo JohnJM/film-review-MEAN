@@ -1,0 +1,38 @@
+<mat-accordion>
+  <div *ngFor =' let review of allReviews'>
+    <mat-expansion-panel class="trans">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          <h3> {{review.title}}</h3>
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <mat-card>
+
+        <img md-card-image [src]="review.img" alt="Film Image" /> <br/> <br/>
+
+        <mat-card-title>
+          <span style="font-weight: bold">Director: </span>{{review.director}} <br/>
+          <span style="font-weight: bold">Studio:</span> {{review.studio}} <br/>
+          <span style="font-weight: bold"> Release date: </span>{{review.year | date}} <br/>
+        </mat-card-title>
+
+        <mat-card-content>
+          <p style="font-weight: bold">Review: </p> -{{review.review}} <br/>
+
+          <a *ngIf="currentUser.role=='editor' || (currentUser.role=='creator' && currentUser._id ==review.reviewer)"
+             [routerLink]="['/onereview',review._id]" class="btn btn-successs">View </a>
+
+          <a *ngIf="currentUser.role=='editor' || (currentUser.role=='creator' && currentUser._id ==review.reviewer)"
+             [routerLink]="['/editreview',review._id]" class="btn btn-successs">Edit </a>
+
+          <button *ngIf="currentUser.role=='editor' || (currentUser.role=='creator' && currentUser._id == review.reviewer)"
+            class="btn btn-danger" type="button" (click)="deleteFilm(review._id)"> Delete
+          </button>
+
+
+        </mat-card-content>
+      </mat-card>
+    </mat-expansion-panel>
+  </div>
+</mat-accordion>
+
